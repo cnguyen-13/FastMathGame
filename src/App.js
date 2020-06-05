@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import Header from "./Components/Header";
 import Options from "./Components/Options";
 import Game from "./Components/Game";
+import TransitionPage from "./Components/TransitionPage";
 import "./App.css";
 
+//Might put these in another file
 const errorUserNameMessage = (
     <p className="error-message">
         Name must contain no spaces and be at least 1 character!
@@ -25,15 +27,7 @@ export default function App() {
     const [difficulty, setDifficulty] = useState("easy");
     const [didGameStart, setDidGameStart] = useState(false);
     const [isTransitioning, setIsTransitioning] = useState(false);
-
-    /*
-    When game starts, send an object of settings 
-    {
-        userName: userName,
-        numOfProblems: numOfProblems,
-        difficulty: difficulty
-    }
-     */
+    const [finishedSettings, setFinishedSettings] = useState({});
 
     //Functions
     const userNameChange = (e) => {
@@ -73,6 +67,8 @@ export default function App() {
                 difficultyLevel: difficulty,
                 numberOfProblems: numOfProblems,
             };
+            setIsTransitioning(true);
+            setFinishedSettings(settings);
             setDidGameStart(true);
         } else {
             if (userName.length < 1 || userName.indexOf(" ") !== -1) {
@@ -85,10 +81,22 @@ export default function App() {
         }
     };
 
-    if (didGameStart) {
-        return <p>Game Started</p>;
-    } else if (isTransitioning) {
-        return <p>Transistion Page</p>;
+    //Might need a transistion function
+    const afterTransition = () => {
+        setIsTransitioning(false);
+    };
+    //Rendering Section
+    if (isTransitioning) {
+        return (
+            <TransitionPage
+                settings={finishedSettings}
+                afterTransitionFunc={afterTransition}
+            />
+        );
+        //Use TransistionPage Component here, this page should last like 7secondsish
+    } else if (didGameStart && !isTransitioning) {
+        return <Game settings={finishedSettings} />;
+        //Use Game Component here
     } else {
         return (
             <div className="App">
