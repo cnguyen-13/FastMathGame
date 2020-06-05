@@ -5,18 +5,18 @@ import NumberOfProblems from "./NumberOfProblems";
 import StartButton from "./StartButton";
 
 export default function Options({
-    onBlurName,
-    onBlurNumOfProblems,
+    onChangeName,
+    onChangeNumOfProblems,
     onChangeDifficulty,
     onClickStartGame,
 }) {
     return (
         <div className="options">
             <h2>Game Settings</h2>
-            <NameInput label="Name:" onBlurFunc={onBlurName} />
+            <NameInput label="Name:" onChangeFunc={onChangeName} />
             <NumberOfProblems
                 label="Number of Problems"
-                onBlurFunc={onBlurNumOfProblems}
+                onChangeFunc={onChangeNumOfProblems}
             />
             <Difficulty
                 label="Difficulty Level"
