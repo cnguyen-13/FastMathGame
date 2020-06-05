@@ -83,7 +83,8 @@ export default function Game({ settings }) {
     const [didGameEnd, setDidGameEnd] = useState(false);
 
     if (didGameEnd) {
-        return <p>Game ended!!!!</p>;
+        return <p>Game ended!!!!</p>; //Results Page Component, pass in correct Attempts, attempts,
+        //Results Page Component should calculate accuracy rate, correctness percentage, time elapsed, etc
     } else {
         return (
             <div className="game">
