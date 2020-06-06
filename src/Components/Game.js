@@ -6,17 +6,13 @@ import UserAnswer from "./UserAnswer";
 import AttemptMessage from "./AttemptMessage";
 import GameEnd from "./GameEnd";
 
-const operations = ["+", "-", "*"]; //Add divide later
-const correctMessages = [
-    "That is correct!",
-    "Keep going!",
-    "Good job, that was correct!",
-];
-const incorrectMessages = [
-    "That was incorrect!",
-    "Maybe next time!",
-    "Not quite the answer!",
-];
+const stringTime = require("./misc/stringTime").calculateTimeString;
+const operations = require("./misc/operationsList").operations; //Add divide later
+const correctMessages = require("./misc/correctAttemptMessages")
+    .correctMessages;
+const incorrectMessages = require("./misc/incorrectAttemptMessages")
+    .incorrectMessages;
+
 export default function Game({ settings }) {
     //Makes sure the mathAnswer is always correct
     useEffect(() => {
