@@ -24,7 +24,7 @@ export default function GameEnd({
                 <p>Time to Complete: {stringTime(time)}</p>
                 <p>Accuracy: {calculateAccuracy()}</p>
             </section>
-            <button onClick={5}>Restart</button>
+            <button onClick={resetFunc}>Restart</button>
         </div>
     );
 }

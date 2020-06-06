@@ -12,7 +12,7 @@ const correctMessages = require("./misc/correctMessages").correctMessages;
 const incorrectMessages = require("./misc/incorrectMessages").incorrectMessages;
 
 //Component
-export default function Game({ settings }) {
+export default function Game({ settings, resetFunc }) {
     useEffect(() => {
         if (currentProblem > settings.numberOfProblems) {
             setDidGameEnd(true);
@@ -81,6 +81,7 @@ export default function Game({ settings }) {
                 correct={correctAttempts}
                 time={timeElapsedSeconds - 1} //FIX THIS AIJWDIOAJWDOIJAWIODJAOIWDJOIAWJODIJAOIWDJIOAWODJAWOIDJOIWAD
                 numOfProblems={settings.numberOfProblems}
+                resetFunc={resetFunc}
             />
         );
     } else {

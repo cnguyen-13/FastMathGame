@@ -29,6 +29,16 @@ export default function App() {
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [finishedSettings, setFinishedSettings] = useState({});
 
+    const resetGame = () => {
+        setUserName("");
+        setHasUserNameError(false);
+        setNumOfProblems(10);
+        setHasNumOfProblemsError(false);
+        setDifficulty("easy");
+        setDidGameStart(false);
+        setIsTransitioning(false);
+        setFinishedSettings({});
+    };
     //Functions
     const userNameChange = (e) => {
         const name = e.target.value;
@@ -95,7 +105,7 @@ export default function App() {
         );
         //Use TransistionPage Component here, this page should last like 7secondsish
     } else if (didGameStart && !isTransitioning) {
-        return <Game settings={finishedSettings} />;
+        return <Game settings={finishedSettings} resetFunc={resetGame} />;
         //Use Game Component here
     } else {
         return (
