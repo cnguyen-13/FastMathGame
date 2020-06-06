@@ -6,27 +6,24 @@ import UserAnswer from "./UserAnswer";
 import AttemptMessage from "./AttemptMessage";
 import GameEnd from "./GameEnd";
 
-const stringTime = require("./misc/stringTime").calculateTimeString;
-const operations = require("./misc/operationsList").operations; //Add divide later
-const correctMessages = require("./misc/correctAttemptMessages")
-    .correctMessages;
-const incorrectMessages = require("./misc/incorrectAttemptMessages")
-    .incorrectMessages;
+//import arrays and functions
+const operations = require("./misc/operationsList").operations;
+const correctMessages = require("./misc/correctMessages").correctMessages;
+const incorrectMessages = require("./misc/incorrectMessages").incorrectMessages;
 
+//Component
 export default function Game({ settings }) {
-    //Makes sure the mathAnswer is always correct
     useEffect(() => {
-        setTimeout(() => {
-            setTimeElapsedSeconds(timeElapsedSeconds + 1);
-        }, 1000);
-
         if (currentProblem > settings.numberOfProblems) {
             setDidGameEnd(true);
         } else {
             setMathAnswer(eval(mathProblem));
+            setTimeout(() => {
+                setTimeElapsedSeconds(timeElapsedSeconds + 1);
+            }, 1000);
         }
     });
-
+    //Other Functions
     //Generate random math problem
     const generateRandomNumber = () => {
         let multiplier;
@@ -42,8 +39,6 @@ export default function Game({ settings }) {
         );
     };
 
-    //Other Functions
-    //function to CHECK mathAnswer vs userAnswer
     const checkUserAnswer = (e) => {
         const userAnswer = parseInt(e.target.value, 10);
         const idx = Math.floor(Math.random() * correctMessages.length);
@@ -84,14 +79,14 @@ export default function Game({ settings }) {
             <GameEnd
                 difficulty={settings.difficultyLevel}
                 correct={correctAttempts}
-                time={5} //use stringTime function here
+                time={timeElapsedSeconds - 1} //FIX THIS AIJWDIOAJWDOIJAWIODJAOIWDJOIAWJODIJAOIWDJIOAWODJAWOIDJOIWAD
                 numOfProblems={settings.numberOfProblems}
             />
         );
     } else {
         return (
             <div className="game">
-                <Timer seconds={timeElapsedSeconds} />
+                <Timer time={timeElapsedSeconds} />
                 <StatsDuringGame
                     playerName={settings.player}
                     difficultyLevel={settings.difficultyLevel}
