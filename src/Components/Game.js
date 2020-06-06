@@ -79,7 +79,7 @@ export default function Game({ settings, resetFunc }) {
             <GameEnd
                 difficulty={settings.difficultyLevel}
                 correct={correctAttempts}
-                time={timeElapsedSeconds - 1} //FIX THIS AIJWDIOAJWDOIJAWIODJAOIWDJOIAWJODIJAOIWDJIOAWODJAWOIDJOIWAD
+                time={timeElapsedSeconds - 1}
                 numOfProblems={settings.numberOfProblems}
                 resetFunc={resetFunc}
             />

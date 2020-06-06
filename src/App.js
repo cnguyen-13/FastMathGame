@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./Components/Header";
 import Options from "./Components/Options";
 import Game from "./Components/Game";
@@ -6,20 +6,19 @@ import TransitionPage from "./Components/TransitionPage";
 import "./App.css";
 
 //Might put these in another file
-const errorUserNameMessage = (
+
+const errorUser = (
     <p className="error-message">
         Name must contain no spaces and be at least 1 character!
     </p>
 );
 
-const errorNumOfProblemsMessage = (
+const errorProblems = (
     <p className="error-message">Must have at least 1 problem!</p>
 );
 
 export default function App() {
-    const [timeElapsed, setTimeElapsed] = useState(0);
-
-    //Settings, difficulty isnt going to have a problem, one is always selected
+    //Settings
     const [userName, setUserName] = useState("");
     const [hasUserNameError, setHasUserNameError] = useState(false);
     const [numOfProblems, setNumOfProblems] = useState(10);
@@ -29,6 +28,7 @@ export default function App() {
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [finishedSettings, setFinishedSettings] = useState({});
 
+    //Functions
     const resetGame = () => {
         setUserName("");
         setHasUserNameError(false);
@@ -39,7 +39,7 @@ export default function App() {
         setIsTransitioning(false);
         setFinishedSettings({});
     };
-    //Functions
+
     const userNameChange = (e) => {
         const name = e.target.value;
         if (name.indexOf(" ") === -1 && name.length >= 1) {
@@ -66,7 +66,6 @@ export default function App() {
     };
 
     const startGame = (e) => {
-        //Send the settings of the game to the Game Component to use!!!
         if (
             userName.indexOf(" ") === -1 &&
             userName.length >= 1 &&
@@ -91,10 +90,10 @@ export default function App() {
         }
     };
 
-    //Might need a transistion function
     const afterTransition = () => {
         setIsTransitioning(false);
     };
+
     //Rendering Section
     if (isTransitioning) {
         return (
@@ -103,10 +102,8 @@ export default function App() {
                 afterTransitionFunc={afterTransition}
             />
         );
-        //Use TransistionPage Component here, this page should last like 7secondsish
     } else if (didGameStart && !isTransitioning) {
         return <Game settings={finishedSettings} resetFunc={resetGame} />;
-        //Use Game Component here
     } else {
         return (
             <div className="App">
@@ -120,17 +117,9 @@ export default function App() {
                     onChangeDifficulty={difficultyChange}
                     onClickStartGame={startGame}
                 />
-                {hasUserNameError ? errorUserNameMessage : <p></p>}
-                {hasNumOfProblemsError ? errorNumOfProblemsMessage : <p></p>}
+                {hasUserNameError ? errorUser : <p></p>}
+                {hasNumOfProblemsError ? errorProblems : <p></p>}
             </div>
         );
     }
 }
-
-/**
- *     useEffect(() => {
-        setTimeout(() => {
-            setTimeElapsed(timeElapsed + 1);
-        }, 1000);
-    });
-*/
