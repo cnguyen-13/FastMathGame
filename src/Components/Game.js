@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import Timer from "./Timer";
 import StatsDuringGame from "./StatsDuringGame";
 import MathProblem from "./MathProblem";
 import UserAnswer from "./UserAnswer";
 import AttemptMessage from "./AttemptMessage";
+import GameEnd from "./GameEnd";
 
 const operations = ["+", "-", "*"]; //Add divide later
 const correctMessages = [
@@ -18,6 +20,10 @@ const incorrectMessages = [
 export default function Game({ settings }) {
     //Makes sure the mathAnswer is always correct
     useEffect(() => {
+        setTimeout(() => {
+            setTimeElapsedSeconds(timeElapsedSeconds + 1);
+        }, 1000);
+
         if (currentProblem > settings.numberOfProblems) {
             setDidGameEnd(true);
         } else {
@@ -42,7 +48,6 @@ export default function Game({ settings }) {
 
     //Other Functions
     //function to CHECK mathAnswer vs userAnswer
-    //mathAnswer is out of sync
     const checkUserAnswer = (e) => {
         const userAnswer = parseInt(e.target.value, 10);
         const idx = Math.floor(Math.random() * correctMessages.length);
@@ -54,7 +59,6 @@ export default function Game({ settings }) {
             setAttemptMessage(incorrectMessages[idx]);
         }
 
-        setAttempts(attempts + 1);
         setFirstNum(generateRandomNumber());
         setSecondNum(generateRandomNumber());
         setMathProblem(generateMathProblem());
@@ -68,31 +72,35 @@ export default function Game({ settings }) {
         return mathProblem;
     };
 
+    //States
+    const [timeElapsedSeconds, setTimeElapsedSeconds] = useState(0);
     const [currentProblem, setCurrentProblem] = useState(1);
-    //These 4 things change each time
     const [firstNum, setFirstNum] = useState(generateRandomNumber());
     const [secondNum, setSecondNum] = useState(generateRandomNumber());
     const [mathProblem, setMathProblem] = useState(generateMathProblem());
     const [mathAnswer, setMathAnswer] = useState(eval(mathProblem));
-    //WAY MORE STATES
     const [correctAttempts, setCorrectAttempts] = useState(0);
-    const [attempts, setAttempts] = useState(0);
-    //Attempt correctness message
     const [attemptMessage, setAttemptMessage] = useState("");
-    //Game Status
     const [didGameEnd, setDidGameEnd] = useState(false);
 
     if (didGameEnd) {
-        return <p>Game ended!!!!</p>; //Results Page Component, pass in correct Attempts, attempts,
-        //Results Page Component should calculate accuracy rate, correctness percentage, time elapsed, etc
+        return (
+            <GameEnd
+                difficulty={settings.difficultyLevel}
+                correct={correctAttempts}
+                time={5} //use stringTime function here
+                numOfProblems={settings.numberOfProblems}
+            />
+        );
     } else {
         return (
             <div className="game">
+                <Timer seconds={timeElapsedSeconds} />
                 <StatsDuringGame
                     playerName={settings.player}
                     difficultyLevel={settings.difficultyLevel}
                     totalProblems={settings.numberOfProblems}
-                    currentProblem={currentProblem} //State of Game Component
+                    currentProblem={currentProblem}
                 />
                 <MathProblem mathProblem={mathProblem} />
                 <UserAnswer onBlurFunc={checkUserAnswer} />
