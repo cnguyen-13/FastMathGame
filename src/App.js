@@ -5,8 +5,7 @@ import Game from "./Components/Game";
 import TransitionPage from "./Components/TransitionPage";
 import "./App.css";
 
-//Might put these in another file
-
+//Error Messages
 const errorUser = (
     <p className="error-message">
         Name must contain no spaces and be at least 1 character!

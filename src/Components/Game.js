@@ -24,7 +24,7 @@ export default function Game({ settings, resetFunc }) {
         }
     });
     //Other Functions
-    //Generate random math problem
+
     const generateRandomNumber = () => {
         let multiplier;
         if (settings.difficultyLevel === "easy") {
