@@ -45,6 +45,15 @@ export default function GamePage({ settings, resetFunc }) {
         );
     };
 
+    const submitEnterKey = (e) => {
+        if (e.key === "Enter") {
+            console.log("awudoiauwid");
+            const inputField = e.target;
+            const submitButton = inputField.nextElementSibling;
+            submitButton.click();
+        }
+    };
+
     const checkUserAnswer = (e) => {
         //This function will be binded to a submit button
         const inputField = e.target.previousElementSibling; //This is the user input box
@@ -105,7 +114,10 @@ export default function GamePage({ settings, resetFunc }) {
                     currentProblemNumber={currentProblemNumber}
                 />
                 <MathProblem mathProblem={mathProblem} />
-                <UserAnswer submitAnswerFunc={checkUserAnswer} />
+                <UserAnswer
+                    submitAnswerFunc={checkUserAnswer}
+                    submitEnterFunc={submitEnterKey}
+                />
                 <AttemptMessage message={attemptMessage} />
             </div>
         );

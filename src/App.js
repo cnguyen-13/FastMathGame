@@ -17,7 +17,7 @@ const errorProblems = (
 
 //App Component
 export default function App() {
-    //Settings
+    //States
     const [userName, setUserName] = useState("");
     const [hasUserNameError, setHasUserNameError] = useState(false);
     const [numOfProblems, setNumOfProblems] = useState(10);

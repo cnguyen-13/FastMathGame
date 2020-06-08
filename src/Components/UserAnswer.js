@@ -1,11 +1,16 @@
 import React from "react";
 import Button from "./Button";
 
-export default function UserAnswer({ submitAnswerFunc }) {
+export default function UserAnswer({ submitAnswerFunc, submitEnterFunc }) {
     return (
         <div>
             <label htmlFor="user-answer">Your Answer:</label>
-            <input type="number" id="user-answer"></input>
+            <input
+                autoFocus
+                type="number"
+                id="user-answer"
+                onKeyPress={submitEnterFunc}
+            ></input>
             <Button label="Submit" onClickFunc={submitAnswerFunc} />
         </div>
     );

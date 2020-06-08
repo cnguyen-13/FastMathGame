@@ -22,5 +22,14 @@
             </p>
         </header>
         <div id="root"></div>
+        <script>
+            const inputField = document.querySelector("#user-answer");
+            inputField.addEventListener("keyup", (e) => {
+                if (e.keyCode === 13) {
+                    const submitButton = inputField.nextElementSibling;
+                    submitButton.click();
+                }
+            });
+        </script>
     </body>
 </html>
