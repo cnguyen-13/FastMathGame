@@ -47,7 +47,6 @@ export default function GamePage({ settings, resetFunc }) {
 
     const submitEnterKey = (e) => {
         if (e.key === "Enter") {
-            console.log("awudoiauwid");
             const inputField = e.target;
             const submitButton = inputField.nextElementSibling;
             submitButton.click();
