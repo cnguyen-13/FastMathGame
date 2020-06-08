@@ -112,6 +112,7 @@ export default function App() {
                     description="How Fast Can You Simple Math?"
                 />
                 <Options
+                    userName={userName}
                     onChangeName={userNameChange}
                     onChangeNumOfProblems={numOfProblemsChange}
                     onChangeDifficulty={difficultyChange}

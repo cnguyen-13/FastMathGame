@@ -5,6 +5,7 @@ import NumberOfProblemsInput from "./NumberOfProblemsInput";
 import Button from "./Button";
 
 export default function Options({
+    userName,
     onChangeName,
     onChangeNumOfProblems,
     onChangeDifficulty,
@@ -13,7 +14,11 @@ export default function Options({
     return (
         <div className="options">
             <h2>Game Settings</h2>
-            <NameInput label="Name:" onChangeFunc={onChangeName} />
+            <NameInput
+                label="Name:"
+                onChangeFunc={onChangeName}
+                name={userName}
+            />
             <NumberOfProblemsInput
                 label="Number of Problems"
                 onChangeFunc={onChangeNumOfProblems}
