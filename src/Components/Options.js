@@ -15,7 +15,7 @@ export default function Options({
         <div className="options">
             <h2>Game Settings</h2>
             <NameInput
-                label="Name:"
+                label="Name"
                 onChangeFunc={onChangeName}
                 name={userName}
             />

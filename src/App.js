@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "./Components/Header";
 import Options from "./Components/Options";
 import GamePage from "./Components/GamePage";
 import TransitionPage from "./Components/TransitionPage";
@@ -107,10 +106,6 @@ export default function App() {
     } else {
         return (
             <div className="App">
-                <Header
-                    title="Fast MATH"
-                    description="How Fast Can You Simple Math?"
-                />
                 <Options
                     userName={userName}
                     onChangeName={userNameChange}

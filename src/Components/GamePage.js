@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
 import StatsDuringGame from "./StatsDuringGame";
 import MathProblem from "./MathProblem";
 import UserAnswer from "./UserAnswer";
 import AttemptMessage from "./AttemptMessage";
 import GameEnd from "./EndGamePage";
-import Statistic from "./Statistic";
 
 //import arrays and functions
 const operations = require("./misc/operationsList").operations;
@@ -16,7 +14,7 @@ const stringTime = require("./misc/stringTime").calculateTimeString;
 //Game Component
 export default function GamePage({ settings, resetFunc }) {
     useEffect(() => {
-        if (currentProblem > settings.numberOfProblems) {
+        if (currentProblemNumber > settings.numberOfProblems) {
             setDidGameEnd(true);
         } else {
             setMathAnswer(eval(mathProblem));
@@ -28,6 +26,7 @@ export default function GamePage({ settings, resetFunc }) {
 
     //Other Functions
     const getMultiplier = () => {
+        //Gets how many digits firstOperand and secondOperand will have
         let multiplier;
         const difficulty = settings.difficultyLevel;
         if (difficulty === "easy") {
@@ -42,7 +41,7 @@ export default function GamePage({ settings, resetFunc }) {
 
     const generateOperandNumber = () => {
         return Math.floor(
-            Math.random() * parseInt(`1${"0".repeat(multiplier)}`)
+            Math.random() * parseInt(`1${"0".repeat(multiplier)}`, 10)
         );
     };
 
@@ -63,7 +62,7 @@ export default function GamePage({ settings, resetFunc }) {
         setfirstOperand(generateOperandNumber());
         setsecondOperand(generateOperandNumber());
         setMathProblem(generateMathProblem());
-        setCurrentProblem(currentProblem + 1);
+        setCurrentProblemNumber(currentProblemNumber + 1);
         inputField.value = "";
     };
 
@@ -73,10 +72,10 @@ export default function GamePage({ settings, resetFunc }) {
         return mathProblem;
     };
 
-    //States
+    //States and variables
+    const multiplier = getMultiplier();
     const [secondsElapsed, setSecondsElapsed] = useState(0);
-    const [currentProblem, setCurrentProblem] = useState(1);
-    const [multiplier, setMultiplier] = useState(getMultiplier());
+    const [currentProblemNumber, setCurrentProblemNumber] = useState(1);
     const [firstOperand, setfirstOperand] = useState(generateOperandNumber());
     const [secondOperand, setsecondOperand] = useState(generateOperandNumber());
     const [mathProblem, setMathProblem] = useState(generateMathProblem());
@@ -87,43 +86,28 @@ export default function GamePage({ settings, resetFunc }) {
 
     if (didGameEnd) {
         return (
-            <>
-                <Header
-                    title="Fast MATH"
-                    description="How Fast Can You Simple Math?"
-                />
-                <GameEnd
-                    difficulty={settings.difficultyLevel}
-                    correct={correctAttempts}
-                    time={secondsElapsed - 1}
-                    numOfProblems={settings.numberOfProblems}
-                    resetFunc={resetFunc}
-                />
-            </>
+            <GameEnd
+                difficulty={settings.difficultyLevel}
+                correct={correctAttempts}
+                time={secondsElapsed - 1}
+                numOfProblems={settings.numberOfProblems}
+                resetFunc={resetFunc}
+            />
         );
     } else {
         return (
-            <>
-                <Header
-                    title="Fast MATH"
-                    description="How Fast Can You Simple Math?"
+            <div className="game">
+                <StatsDuringGame
+                    time={stringTime(secondsElapsed)}
+                    playerName={settings.player}
+                    difficultyLevel={settings.difficultyLevel}
+                    totalProblems={settings.numberOfProblems}
+                    currentProblemNumber={currentProblemNumber}
                 />
-                <div className="game">
-                    <Statistic
-                        label="Timer"
-                        stat={stringTime(secondsElapsed)}
-                    />
-                    <StatsDuringGame
-                        playerName={settings.player}
-                        difficultyLevel={settings.difficultyLevel}
-                        totalProblems={settings.numberOfProblems}
-                        currentProblem={currentProblem}
-                    />
-                    <MathProblem mathProblem={mathProblem} />
-                    <UserAnswer submitAnswerFunc={checkUserAnswer} />
-                    <AttemptMessage message={attemptMessage} />
-                </div>
-            </>
+                <MathProblem mathProblem={mathProblem} />
+                <UserAnswer submitAnswerFunc={checkUserAnswer} />
+                <AttemptMessage message={attemptMessage} />
+            </div>
         );
     }
 }

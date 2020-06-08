@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
 
 export default function TransitionPage({ settings, afterTransitionFunc }) {
     const [countDown, setCountDown] = useState(3);
@@ -14,21 +13,15 @@ export default function TransitionPage({ settings, afterTransitionFunc }) {
     });
 
     return (
-        <>
-            <Header
-                title="Fast MATH"
-                description="How Fast Can You Simple Math?"
-            />
-            <div className="trasition-page">
-                <h1 className="transition-page-title">
-                    Good Luck {settings.player}!
-                </h1>
-                <p className="transition-page-message">
-                    You have {settings.numberOfProblems}{" "}
-                    {settings.difficultyLevel} problems!
-                </p>
-                <span className="transition-page-countdown">{countDown}</span>
-            </div>
-        </>
+        <div className="trasition-page">
+            <h1 className="transition-page-title">
+                Good Luck {settings.player}!
+            </h1>
+            <p className="transition-page-message">
+                You have {settings.numberOfProblems} {settings.difficultyLevel}{" "}
+                problems!
+            </p>
+            <span className="transition-page-countdown">{countDown}</span>
+        </div>
     );
 }
