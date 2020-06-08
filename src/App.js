@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "./Components/Header";
 import Options from "./Components/Options";
-import Game from "./Components/Game";
+import GamePage from "./Components/GamePage";
 import TransitionPage from "./Components/TransitionPage";
 import "./App.css";
 
@@ -16,6 +16,7 @@ const errorProblems = (
     <p className="error-message">Must have at least 1 problem!</p>
 );
 
+//App Component
 export default function App() {
     //Settings
     const [userName, setUserName] = useState("");
@@ -29,7 +30,7 @@ export default function App() {
 
     //Functions
     const resetGame = () => {
-        setUserName("");
+        setUserName(userName);
         setHasUserNameError(false);
         setNumOfProblems(10);
         setHasNumOfProblemsError(false);
@@ -102,7 +103,7 @@ export default function App() {
             />
         );
     } else if (didGameStart && !isTransitioning) {
-        return <Game settings={finishedSettings} resetFunc={resetGame} />;
+        return <GamePage settings={finishedSettings} resetFunc={resetGame} />;
     } else {
         return (
             <div className="App">

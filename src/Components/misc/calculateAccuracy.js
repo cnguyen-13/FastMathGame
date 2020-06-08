@@ -1,3 +1,4 @@
 exports.calculateAccuracy = (correct, total) => {
-    return `${(correct / total) * 100} %`;
+    const percentage = Math.round((correct / total) * 100);
+    return `${percentage} %`;
 };

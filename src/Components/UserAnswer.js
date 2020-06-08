@@ -1,10 +1,12 @@
 import React from "react";
+import Button from "./Button";
 
-export default function UserAnswer({ onBlurFunc }) {
+export default function UserAnswer({ submitAnswerFunc }) {
     return (
-        <div onBlur={onBlurFunc}>
-            <label forHtml="user-answer">Your Answer:</label>
+        <div>
+            <label htmlFor="user-answer">Your Answer:</label>
             <input type="number" id="user-answer"></input>
+            <Button label="Submit" onClickFunc={submitAnswerFunc} />
         </div>
     );
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import Difficulty from "./Difficulty";
+import DifficultyInput from "./DifficultyInput";
 import NameInput from "./NameInput";
-import NumberOfProblems from "./NumberOfProblems";
-import StartButton from "./StartButton";
+import NumberOfProblemsInput from "./NumberOfProblemsInput";
+import Button from "./Button";
 
 export default function Options({
     onChangeName,
@@ -14,15 +14,15 @@ export default function Options({
         <div className="options">
             <h2>Game Settings</h2>
             <NameInput label="Name:" onChangeFunc={onChangeName} />
-            <NumberOfProblems
+            <NumberOfProblemsInput
                 label="Number of Problems"
                 onChangeFunc={onChangeNumOfProblems}
             />
-            <Difficulty
+            <DifficultyInput
                 label="Difficulty Level"
                 onChangeFunc={onChangeDifficulty}
             />
-            <StartButton label="Start Game" onClickFunc={onClickStartGame} />
+            <Button label="Start Game" onClickFunc={onClickStartGame} />
         </div>
     );
 }
