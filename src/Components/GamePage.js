@@ -39,6 +39,13 @@ export default function GamePage({ settings, resetFunc }) {
         return multiplier;
     };
 
+    const generateNewProblem = () => {
+        setfirstOperand(generateOperandNumber());
+        setsecondOperand(generateOperandNumber());
+        setMathProblem(generateMathProblem());
+        setCurrentProblemNumber(currentProblemNumber + 1);
+    };
+
     const generateOperandNumber = () => {
         return Math.floor(
             Math.random() * parseInt(`1${"0".repeat(multiplier)}`, 10)
@@ -66,12 +73,8 @@ export default function GamePage({ settings, resetFunc }) {
             setAttemptMessage(incorrectMessages[idx]);
         }
 
-        //Change Math Problem and Reset inputField
-        setfirstOperand(generateOperandNumber());
-        setsecondOperand(generateOperandNumber());
-        setMathProblem(generateMathProblem());
-        setCurrentProblemNumber(currentProblemNumber + 1);
         inputField.value = "";
+        generateNewProblem();
     };
 
     const generateMathProblem = () => {
