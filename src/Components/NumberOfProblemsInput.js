@@ -2,7 +2,7 @@ import React from "react";
 
 export default function NumberOfProblems({ label, onChangeFunc }) {
     return (
-        <div>
+        <div className="user-input">
             <label htmlFor="num-of-problems" className="user-input-label">
                 {label}
             </label>

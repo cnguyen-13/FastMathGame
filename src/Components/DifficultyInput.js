@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Difficulty({ label, onChangeFunc }) {
     return (
-        <div onChange={onChangeFunc}>
-            <label>{label}</label>
+        <div className="user-input" onChange={onChangeFunc}>
+            <label className="user-input-label">{label}</label>
             <div className="difficulty-input-line">
                 <input
                     id="easy"
