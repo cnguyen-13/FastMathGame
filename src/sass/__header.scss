@@ -1,11 +1,12 @@
 .app-header {
     height: 175px;
     text-align: center;
-    color: white;
+    color: $color-text-color-on-dark-bg;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
         url("../images/background.jpg");
     background-size: cover;
     padding: 30px;
+    margin-bottom: 50px;
 }
 
 .app-header-title {

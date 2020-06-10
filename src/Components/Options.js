@@ -12,8 +12,8 @@ export default function Options({
     onClickStartGame,
 }) {
     return (
-        <div className="options">
-            <h2 className="options-header">Game Settings</h2>
+        <div className="main-section">
+            <h2 className="sub-header">Game Settings</h2>
             <NameInput
                 label="Name"
                 onChangeFunc={onChangeName}
@@ -30,7 +30,6 @@ export default function Options({
             <Button
                 label="Start Game"
                 onClickFunc={onClickStartGame}
-                classes="action-btn start-game-btn"
             />
         </div>
     );

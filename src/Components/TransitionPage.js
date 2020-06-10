@@ -18,7 +18,7 @@ export default function TransitionPage({ settings, afterTransitionFunc }) {
 
     return (
         <div className="transition-page">
-            <h2 className="transition-page-title">
+            <h2 className="sub-header transition-page-title">
                 <p>Good Luck {settings.player}!</p>
             </h2>
             <span className="transition-page-countdown">{countDown}</span>

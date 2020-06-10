@@ -17,8 +17,8 @@ export default function EndGamePage({
     };
 
     return (
-        <div>
-            <h2>Your Results</h2>
+        <div className="main-section">
+            <h2 className="sub-header">Your Results!</h2>
             <EndGameStats stats={stats} />
             <Button label="Restart" onClickFunc={resetFunc} />
         </div>

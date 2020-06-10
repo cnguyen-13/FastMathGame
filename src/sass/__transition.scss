@@ -3,15 +3,10 @@
 }
 
 .transition-page-title {
-    font-size: 150%;
-    margin-bottom: 20px;
-    height: 100px;
-    color: white;
-    background-color: #3498db;
-    align-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    color: $color-text-color-on-dark-bg;
 }
 
 .transition-page-countdown {

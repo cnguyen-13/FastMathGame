@@ -107,7 +107,8 @@ export default function GamePage({ settings, resetFunc }) {
         );
     } else {
         return (
-            <div className="game">
+            <div className="main-section">
+                <h2 className="sub-header">Game Time {settings.player}!</h2>
                 <StatsDuringGame
                     time={stringTime(secondsElapsed)}
                     playerName={settings.player}

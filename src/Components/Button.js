@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function Button({ label, onClickFunc, classes }) {
+export default function Button({ label, onClickFunc}) {
     return (
-        <button className={classes} onClick={onClickFunc}>
+        <button className="action-btn" onClick={onClickFunc}>
             {label}
         </button>
     );
