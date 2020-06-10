@@ -27,10 +27,7 @@ export default function Options({
                 label="Difficulty Level"
                 onChangeFunc={onChangeDifficulty}
             />
-            <Button
-                label="Start Game"
-                onClickFunc={onClickStartGame}
-            />
+            <Button label="Start Game" onClickFunc={onClickStartGame} />
         </div>
     );
 }

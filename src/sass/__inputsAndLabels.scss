@@ -1,21 +1,33 @@
-.user-input, .stats-row {
+.user-input,
+.stats-row {
     margin: 0 20px;
     margin-bottom: 20px;
 }
 
-.user-input-label, .user-input-field, .user-answer-label, .user-answer-input {
+.user-input-label,
+.user-input-field,
+.user-answer-label,
+.user-answer-input {
     display: block;
-} 
+}
 
-.user-input-label, .difficulty-input-line {
+.user-input-label,
+.difficulty-input-line {
     text-align: left;
 }
 
-.user-input-label, .error-message, .stats-row-label, .attempt-message {
+.user-input-label,
+.error-message,
+.stats-row-label,
+.attempt-message {
     font-weight: bold;
 }
 
-.math-problem, .user-answer, .user-answer-input, .attempt-message, .error-message {
+.math-problem,
+.user-answer,
+.user-answer-input,
+.attempt-message,
+.error-message {
     text-align: center;
 }
 
@@ -70,7 +82,7 @@
     font-size: 125%;
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
     .stats-during-game {
         flex-direction: row;
     }
