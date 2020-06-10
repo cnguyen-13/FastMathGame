@@ -3,7 +3,7 @@ import React from "react";
 export default function NameInput({ label, onChangeFunc, name }) {
     if (name) {
         return (
-            <div>
+            <div className="user-input">
                 <label htmlFor="name" className="user-input-label">
                     {label}
                 </label>
@@ -18,7 +18,7 @@ export default function NameInput({ label, onChangeFunc, name }) {
         );
     } else {
         return (
-            <div>
+            <div className="user-input">
                 <label htmlFor="name" className="user-input-label">
                     {label}
                 </label>

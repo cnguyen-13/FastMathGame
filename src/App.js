@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Options from "./Components/Options";
 import GamePage from "./Components/GamePage";
 import TransitionPage from "./Components/TransitionPage";
-import "./App.css";
+import "./styles/main.css";
 
 //Error Messages
 const errorUser = (
@@ -105,7 +105,7 @@ export default function App() {
         return <GamePage settings={finishedSettings} resetFunc={resetGame} />;
     } else {
         return (
-            <div className="App">
+            <div className="app">
                 <Options
                     userName={userName}
                     onChangeName={userNameChange}

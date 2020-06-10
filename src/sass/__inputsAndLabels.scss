@@ -1,0 +1,77 @@
+.user-input, .stats-row {
+    margin: 0 20px;
+    margin-bottom: 20px;
+}
+
+.user-input-label, .user-input-field, .user-answer-label, .user-answer-input {
+    display: block;
+} 
+
+.user-input-label, .difficulty-input-line {
+    text-align: left;
+}
+
+.user-input-label, .error-message, .stats-row-label, .attempt-message {
+    font-weight: bold;
+}
+
+.math-problem, .user-answer, .user-answer-input, .attempt-message, .error-message {
+    text-align: center;
+}
+
+.user-input-label {
+    margin-bottom: 5px;
+}
+
+.user-input-field {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.difficulty-input-line {
+    margin-bottom: 10px;
+}
+
+.difficulty-radio-btn {
+    margin-right: 5px;
+}
+
+.error-message {
+    color: $color-error-message;
+    margin-top: 10px;
+}
+
+.math-problem {
+    font-size: 600%;
+}
+
+.user-answer {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.user-answer-input {
+    margin: 10px auto;
+    width: 80%;
+    height: 30px;
+}
+
+.attempt-message {
+    margin-top: 10px;
+}
+
+.stats-during-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 125%;
+}
+
+@media(min-width: 768px) {
+    .stats-during-game {
+        flex-direction: row;
+    }
+}

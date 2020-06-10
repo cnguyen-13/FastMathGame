@@ -1,0 +1,37 @@
+.action-btn {
+    border: none;
+    border-radius: 3px;
+    width: 200px;
+    padding: 10px 20px;
+    color: $color-text-color-on-dark-bg;
+    background-color: $color-button-bg;
+    font-size: 125%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background-color: $color-button-hover;
+}
+
+.main-section {
+    width: 90%;
+    padding-bottom: 20px;
+    max-width: 800px;
+    color: $color-text-color-on-dark-bg;
+    background-color: $color-main-bg;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.sub-header {
+    margin-bottom: 30px;
+    background-color: $color-subheader-bg;
+    padding: 30px;
+    font-size: 190%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+}

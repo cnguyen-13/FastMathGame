@@ -1,0 +1,20 @@
+.app-header {
+    height: 175px;
+    text-align: center;
+    color: $color-text-color-on-dark-bg;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("../images/background.jpg");
+    background-size: cover;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+
+.app-header-title {
+    font-size: 300%;
+    margin-bottom: 10px;
+}
+
+.app-header-description {
+    font-size: 22px;
+    opacity: 0.8;
+}
